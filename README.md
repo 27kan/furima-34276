@@ -22,8 +22,8 @@
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| item_name       | string     | null: false                    |
-| item_info       | text       | null: false                    |
+| name            | string     | null: false                    |
+| info            | text       | null: false                    |
 | category_id     | integer    | null: false                    |
 | item_status_id  | integer    | null: false                    |
 | shipping_id     | integer    | null: false                    |
@@ -59,6 +59,7 @@
 | house_number    | string     | null: false                    |
 | building_name   | string     |                                |
 | phone           | string     | null: false                    | 
+| order           | references | null: false, foreign_key: true |
 ### Association
 
 - belongs_to :order
