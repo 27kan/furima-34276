@@ -16,5 +16,5 @@ class User < ApplicationRecord
     # マッチしなければ、messageに指定されたエラーメッセージを返す
   end
     # 半角英数字のみ許可する
-    validates :password, format:{with: /[a-z\d]/i, message: " "}
+    validates :password, format:{with: /[a-z\d]/i, message: "is invalid. Input ALP & Num characters. "}
 end
