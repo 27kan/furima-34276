@@ -14,6 +14,7 @@ class User < ApplicationRecord
     validates :first_reading, format: {with: /\A[ァ-ヶー]+\z/, message: "is invalid. Input full-width katakana characters."}
     # format:は、with（正規表現）と属性値がマッチするか
     # マッチしなければ、messageに指定されたエラーメッセージを返す
+    validates :birthday
   end
     # passwordの英数字混合正規表現
     validates :password, format:{with: (/\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i), message: "is invalid. Input alphabet & numeral characters. "}
