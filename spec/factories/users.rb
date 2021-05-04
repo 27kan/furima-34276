@@ -8,6 +8,6 @@ FactoryBot.define do
     first_name            {Gimei.name.first}
     last_reading          {Gimei.name.katakana.last}
     first_reading         {Gimei.name.katakana.first}
-    birthday              {Faker::Date.birthday}
+    birthday              {Faker::Date.birthday(max_age:65)}
   end
 end
