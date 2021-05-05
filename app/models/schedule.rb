@@ -7,5 +7,5 @@ class Schedule < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many
+  has_many :items
 end

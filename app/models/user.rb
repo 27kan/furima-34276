@@ -18,4 +18,6 @@ class User < ApplicationRecord
   end
     # passwordの英数字混合正規表現
     validates :password, format:{with: (/\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i), message: "is invalid. Input alphabet & numeral characters. "}
+  
+  has_many :items
 end
