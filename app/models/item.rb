@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   with_options presence: true do
-    validates :name, :info, :price
+    validates :name, :info
     validates :category_id,
               :item_status_id,
               :shipping_id,
@@ -8,6 +8,7 @@ class Item < ApplicationRecord
               :schedule_id,
                 numericality:{ other_than: 0 }
     validates :image
+    validates :price, numericality:{ greater_than_or_equal_to: 300, less_than: 10000000, message: "is invalid. Input half-width characters. 300 ~ 9,999,999 " }
   end
 
   # ActiveHashのアソシエーション
