@@ -91,6 +91,21 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include "Price is invalid. Input half-width characters. 300 ~ 9,999,999"
       end
+      it '価格が全角文字では保存ができない' do
+        @item.price = "全角文字"
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Price is invalid. Input half-width characters. 300 ~ 9,999,999"
+      end
+      it '価格が半角英字では保存ができない' do
+        @item.price = "hankaku"
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Price is invalid. Input half-width characters. 300 ~ 9,999,999"
+      end
+      it '価格が半角英数字混合では保存ができない' do
+        @item.price = "kongou1"
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Price is invalid. Input half-width characters. 300 ~ 9,999,999"
+      end
       it 'userが紐付いていないと保存できない' do
         @item.user = nil
         @item.valid?
