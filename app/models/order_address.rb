@@ -1,6 +1,6 @@
 class OrderAddress
     # Formオブジェクトの機能を持たせるため
-    include ActionModel::Model
+    include ActiveModel::Model
     # 保存したいカラム名を属性値として扱えるように
     # order_idは必要かわからないから必要なら後で付け足す
     attr_accessor :user_id, :item_id, :postal_code, :area_id, :city, :house_number, :building_name, :phone
@@ -13,8 +13,8 @@ class OrderAddress
     
     def save
         order = Order.create(user_id: user_id, item_id: item_id)
-        Address.create(postal_code: postal_code, area_id: area_id, city: city
-                        house_number: house_number, building_name: building_name
+        Address.create(postal_code: postal_code, area_id: area_id, city: city,
+                        house_number: house_number, building_name: building_name,
                         phone: phone, order_id: order.id)
     end
 end
