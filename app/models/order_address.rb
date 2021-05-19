@@ -6,7 +6,8 @@ class OrderAddress
     attr_accessor :user_id, :item_id, :postal_code, :area_id, :city, :house_number, :building_name, :phone
 
     with_options presence: true do
-        validates :user_id, :item_id, :city, :house_number, :phone
+        validates :user_id, :item_id, :city, :house_number
+        validates :phone, numericality: {only_integer: true, message: 'is invalid. Only integer'}
         validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'is invalid. Include hyphen(-)' }
         validates :area_id, numericality: {other_than: 0 }
     end
