@@ -7,7 +7,7 @@ class OrderAddress
 
     with_options presence: true do
         validates :user_id, :item_id, :city, :house_number
-        validates :phone, numericality: {only_integer: true, message: 'is invalid. Only integer'}
+        validates :phone, numericality: {only_integer: true, message: 'is invalid. Only integer'}, length: {maximum: 11}
         validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'is invalid. Include hyphen(-)' }
         validates :area_id, numericality: {other_than: 0 }
     end
