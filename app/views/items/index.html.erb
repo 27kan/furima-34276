@@ -131,12 +131,11 @@
           <div class='item-img-content'>
             <%= link_to (image_tag item.image, class: "item-img" ), item_path(item.id) %>
 
-            <%# <% if item.order_id.empty? >
+            <% if item.order.present? %>
               <div class='sold-out'>
                 <span>Sold Out!!</span>
               </div>
             <% end %>
-            <%# 購入機能実装後、再度実装する%>
 
           </div>
           <div class='item-info'>
