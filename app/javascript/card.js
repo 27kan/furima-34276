@@ -24,7 +24,7 @@ const pay = () => {
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
       };
       // カード情報を消す処理（name属性）
-      debugger;
+      
       document.getElementById("card-number").removeAttribute("name");
       document.getElementById("card-exp-month").removeAttribute("name");
       document.getElementById("card-exp-year").removeAttribute("name");
