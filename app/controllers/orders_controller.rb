@@ -2,15 +2,14 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user
   before_action :soldout_item
+  before_action :set_params, only: [:index, :create]
 
   def index # indexアクションでインスタンスを渡す
     @order_address = OrderAddress.new
-    @item = Item.find(params[:item_id])
   end
 
   def create
     @order_address = OrderAddress.new(order_params)
-    @item = Item.find(params[:item_id])
     if @order_address.valid?
       pay_item
       @order_address.save
@@ -30,6 +29,10 @@ class OrdersController < ApplicationController
     if @user.user_id == current_user.id
       redirect_to root_path
     end
+  end
+
+  def set_params
+    @item = Item.find(params[:item_id])
   end
   
   def pay_item
