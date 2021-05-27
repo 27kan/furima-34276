@@ -25,8 +25,8 @@ class OrdersController < ApplicationController
   end
 
   def correct_user # 出品者を自身の商品購入画面へ遷移させない
-    @user = Item.find(params[:item_id])
-    if @user.user_id == current_user.id
+    @item = Item.find(params[:item_id])
+    if @item.user_id == current_user.id
       redirect_to root_path
     end
   end
