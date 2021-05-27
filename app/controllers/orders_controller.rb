@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user
+  before_action :soldout_item
 
   def index # indexアクションでインスタンスを渡す
     @order_address = OrderAddress.new
@@ -38,5 +39,12 @@ class OrdersController < ApplicationController
       card: order_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def soldout_item
+    @item = Item.find(params[:item_id])
+    if @item.order.present?
+      redirect_to root_path
+    end
   end
 end

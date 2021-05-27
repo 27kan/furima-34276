@@ -2,9 +2,10 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :set_params, only: [:show, :edit, :update, :destroy]
+  before_action :soldout_item, only: [:edit, :update]
 
   def index
-    @items = Item.all.order('created_at DESC')
+    @items = Item.includes(:order).order('created_at DESC')
   end
 
   def new
@@ -53,6 +54,13 @@ class ItemsController < ApplicationController
   def correct_user
     @user = Item.find(params[:id])
     unless @user.user_id == current_user.id
+      redirect_to root_path
+    end
+  end
+
+  def soldout_item
+    @item = Item.find(params[:id])
+    if @item.order.present?
       redirect_to root_path
     end
   end
