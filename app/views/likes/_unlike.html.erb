@@ -1,0 +1,6 @@
+<%= link_to like_path(item.id), method: :post, remote: true do %>
+  <div class="star-icon">
+    <%= icon "far", "star", class: 'fa-lg' %>
+  </div>
+<% end %>
+<span><%= item.likes.count %></span>

@@ -1,0 +1,6 @@
+<%= link_to unlike_path(item.id), method: :delete, remote: true do %>
+  <div class="star-icon">
+    <%= icon "fa", "star", class: 'fa-lg' %>
+  </div>
+<% end %>
+<span><%= item.likes.count %></span>
