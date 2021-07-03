@@ -22,4 +22,7 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :orders
+  has_many :likes
+  has_many :likes_items, through: :likes, source: :item
+  
 end
